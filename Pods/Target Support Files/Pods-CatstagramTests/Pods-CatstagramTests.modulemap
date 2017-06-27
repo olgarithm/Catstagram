@@ -1,0 +1,6 @@
+framework module Pods_CatstagramTests {
+  umbrella header "Pods-CatstagramTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
