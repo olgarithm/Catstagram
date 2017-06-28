@@ -12,6 +12,7 @@
 		865050E31F031581003B0D40 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865050E21F031581003B0D40 /* PhotoMapViewController.swift */; };
 		865050E51F031EC6003B0D40 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865050E41F031EC6003B0D40 /* HomeScreenViewController.swift */; };
 		865050E71F032F5B003B0D40 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865050E61F032F5B003B0D40 /* Post.swift */; };
+		865050ED1F042D1B003B0D40 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865050EC1F042D1B003B0D40 /* PostCell.swift */; };
 		866EB8661F0302B2004DD202 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EB8651F0302B2004DD202 /* LoginViewController.swift */; };
 		86C5B6D11F02FC7A0003C643 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5B6D01F02FC7A0003C643 /* AppDelegate.swift */; };
 		86C5B6D31F02FC7A0003C643 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5B6D21F02FC7A0003C643 /* ViewController.swift */; };
@@ -49,6 +50,7 @@
 		865050E21F031581003B0D40 /* PhotoMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMapViewController.swift; sourceTree = "<group>"; };
 		865050E41F031EC6003B0D40 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		865050E61F032F5B003B0D40 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = ../Post.swift; sourceTree = "<group>"; };
+		865050EC1F042D1B003B0D40 /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		866EB8651F0302B2004DD202 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86C5B6CD1F02FC7A0003C643 /* Catstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86C5B6D01F02FC7A0003C643 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				86C5B6D91F02FC7A0003C643 /* LaunchScreen.storyboard */,
 				86C5B6DC1F02FC7A0003C643 /* Info.plist */,
 				866EB8651F0302B2004DD202 /* LoginViewController.swift */,
+				865050EC1F042D1B003B0D40 /* PostCell.swift */,
 			);
 			path = Catstagram;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				TargetAttributes = {
 					86C5B6CC1F02FC7A0003C643 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 2RV3P7RPT3;
 						ProvisioningStyle = Automatic;
 					};
 					86C5B6E01F02FC7A0003C643 = {
@@ -459,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				866EB8661F0302B2004DD202 /* LoginViewController.swift in Sources */,
+				865050ED1F042D1B003B0D40 /* PostCell.swift in Sources */,
 				86C5B6D31F02FC7A0003C643 /* ViewController.swift in Sources */,
 				865050E31F031581003B0D40 /* PhotoMapViewController.swift in Sources */,
 				865050E71F032F5B003B0D40 /* Post.swift in Sources */,
@@ -616,6 +621,7 @@
 			baseConfigurationReference = 82D664BA3500F244CD396601 /* Pods-Catstagram.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2RV3P7RPT3;
 				INFOPLIST_FILE = Catstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.olga.Catstagram;
@@ -629,6 +635,7 @@
 			baseConfigurationReference = CBEB697E2F0149997F146F06 /* Pods-Catstagram.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 2RV3P7RPT3;
 				INFOPLIST_FILE = Catstagram/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.olga.Catstagram;
