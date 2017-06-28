@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3FB55BCFAA9D5293E6881838 /* Pods_CatstagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 699EF5833978F3FC8E780095 /* Pods_CatstagramUITests.framework */; };
 		767D0AC90272955AFFFB5631 /* Pods_CatstagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17DCD0FF84AE09158CE9B1C6 /* Pods_CatstagramTests.framework */; };
+		865050E31F031581003B0D40 /* PhotoMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865050E21F031581003B0D40 /* PhotoMapViewController.swift */; };
+		865050E51F031EC6003B0D40 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865050E41F031EC6003B0D40 /* HomeScreenViewController.swift */; };
+		865050E71F032F5B003B0D40 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865050E61F032F5B003B0D40 /* Post.swift */; };
 		866EB8661F0302B2004DD202 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 866EB8651F0302B2004DD202 /* LoginViewController.swift */; };
 		86C5B6D11F02FC7A0003C643 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5B6D01F02FC7A0003C643 /* AppDelegate.swift */; };
 		86C5B6D31F02FC7A0003C643 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5B6D21F02FC7A0003C643 /* ViewController.swift */; };
@@ -43,6 +46,9 @@
 		322D227006153E72572DF020 /* Pods-CatstagramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatstagramUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CatstagramUITests/Pods-CatstagramUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		699EF5833978F3FC8E780095 /* Pods_CatstagramUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CatstagramUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		82D664BA3500F244CD396601 /* Pods-Catstagram.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catstagram.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Catstagram/Pods-Catstagram.debug.xcconfig"; sourceTree = "<group>"; };
+		865050E21F031581003B0D40 /* PhotoMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoMapViewController.swift; sourceTree = "<group>"; };
+		865050E41F031EC6003B0D40 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		865050E61F032F5B003B0D40 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Post.swift; path = ../Post.swift; sourceTree = "<group>"; };
 		866EB8651F0302B2004DD202 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		86C5B6CD1F02FC7A0003C643 /* Catstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86C5B6D01F02FC7A0003C643 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -129,6 +135,9 @@
 				86C5B6D01F02FC7A0003C643 /* AppDelegate.swift */,
 				86C5B6D21F02FC7A0003C643 /* ViewController.swift */,
 				86C5B6D41F02FC7A0003C643 /* Main.storyboard */,
+				865050E61F032F5B003B0D40 /* Post.swift */,
+				865050E41F031EC6003B0D40 /* HomeScreenViewController.swift */,
+				865050E21F031581003B0D40 /* PhotoMapViewController.swift */,
 				86C5B6D71F02FC7A0003C643 /* Assets.xcassets */,
 				86C5B6D91F02FC7A0003C643 /* LaunchScreen.storyboard */,
 				86C5B6DC1F02FC7A0003C643 /* Info.plist */,
@@ -451,7 +460,10 @@
 			files = (
 				866EB8661F0302B2004DD202 /* LoginViewController.swift in Sources */,
 				86C5B6D31F02FC7A0003C643 /* ViewController.swift in Sources */,
+				865050E31F031581003B0D40 /* PhotoMapViewController.swift in Sources */,
+				865050E71F032F5B003B0D40 /* Post.swift in Sources */,
 				86C5B6D11F02FC7A0003C643 /* AppDelegate.swift in Sources */,
+				865050E51F031EC6003B0D40 /* HomeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

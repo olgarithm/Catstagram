@@ -24,12 +24,8 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
     @IBAction func onSignIn(_ sender: Any) {
         if hasRequiredParam() {
-            let username = usernameField.text ?? ""
-            let password = passwordField.text ?? ""
-            
             PFUser.logInWithUsername(inBackground: usernameField.text!, password: passwordField.text!) { (user: PFUser?, error: Error?) in
                 if let error = error {
                     print("User log in failed: \(error.localizedDescription)")
@@ -37,11 +33,10 @@ class LoginViewController: UIViewController {
                     print("User logged in successfully")
                     self.performSegue(withIdentifier: "loginSegue", sender: nil)
                 }
-                
             }
         }
-
     }
+    
     @IBAction func onSignUp(_ sender: Any) {
         if hasRequiredParam() {
             let newUser = PFUser()

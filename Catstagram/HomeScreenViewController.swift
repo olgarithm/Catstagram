@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class HomeScreenViewController: UIViewController {
 
@@ -20,8 +21,15 @@ class HomeScreenViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    @IBAction func didLogOut(_ sender: Any) {
+        PFUser.logOutInBackground { (error: Error?) in
+            print("You're logged out!")
+            self.performSegue(withIdentifier: "logOutSegue", sender: nil)
+        }
+    }
+    
+    
     /*
     // MARK: - Navigation
 
