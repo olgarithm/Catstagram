@@ -8,20 +8,29 @@
 
 import UIKit
 
-class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
-    @IBOutlet weak var captionField: UITextField!
+    @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var choosenImage: UIImageView!
-    var choosenCamera = ""
+    var choosenCameraType = ""
     var postCaption = ""
+    @IBOutlet weak var placeholderLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let typeOfCamera = choosenCamera
+        captionTextView.delegate = self
+        placeholderLabel.text = "Write a caption..."
+        placeholderLabel.sizeToFit()
+        captionTextView.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (captionTextView.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !captionTextView.text.isEmpty
+        captionTextView.layer.cornerRadius = 5.0
+        let cameraType = choosenCameraType
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
-        if typeOfCamera == "takePicture" {
+        if cameraType == "takePicture" {
             if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 print("Camera is available 📸")
                 vc.sourceType = .camera
@@ -39,8 +48,13 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         view.endEditing(true)
     }
     
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
+    
+    
     @IBAction func didPressUpload(_ sender: Any) {
-        postCaption = captionField.text ?? ""
+            postCaption = captionTextView.text ?? ""
         Post.postUserImage(image: choosenImage.image, withCaption: postCaption) { (bool: Bool, error: Error?) in
             print("Post complete")
         }
@@ -57,8 +71,6 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         // Get the image captured by the UIImagePickerController
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         choosenImage.image = resize(image: editedImage, newSize: CGSize(width: 640, height: 640))
-        choosenImage.layer.borderWidth = 5
-        choosenImage.layer.borderColor = UIColor.black.cgColor
         dismiss(animated: true, completion: nil)
     }
     

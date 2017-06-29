@@ -84,5 +84,13 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "DetailedView") {
+            let cell = sender as! UITableViewCell
+            if let indexPath = tableView.indexPath(for: cell) {
+                let postData = returnedPosts[indexPath.row]
+                let detailViewController = segue.destination as! DetailedPostViewController
+                detailViewController.post = postData
+            }
+        }
     }
 }

@@ -22,8 +22,6 @@ class SelectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,12 +29,14 @@ class SelectionViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        var destinationViewController = segue.destination as! PhotoMapViewController
-        destinationViewController.choosenCamera = typeOfCamera
+    override func prepare(for segue:
+        UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ToPhotoMap" {
+            let destinationViewController = segue.destination as! PhotoMapViewController
+            destinationViewController.choosenCameraType = self.typeOfCamera
+        }
     }
     
-
     /*
     // MARK: - Navigation
 
