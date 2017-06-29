@@ -14,18 +14,27 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
 
     @IBOutlet weak var tableView: UITableView!
     var returnedPosts: [PFObject] = []
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
-        Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getPosts), userInfo: nil, repeats: true)
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(self.refreshControlAction(_:)), for: .valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        tableView.separatorStyle = .none
+        getPosts()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        getPosts()
+    }
+    
     @IBAction func didLogOut(_ sender: Any) {
         PFUser.logOutInBackground { (error: Error?) in
             print("You're logged out!")
@@ -56,6 +65,7 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
     func getPosts() {
         let query = PFQuery(className: "Post")
         query.limit = 20
+        query.addDescendingOrder("createdAt")
         query.includeKey("author")
         
         // fetch data asynchronously
@@ -66,6 +76,7 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
             } else {
                 print(error?.localizedDescription as Any)
             }
+            self.refreshControl.endRefreshing()
         }
     }
     
@@ -73,6 +84,5 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
     }
 }

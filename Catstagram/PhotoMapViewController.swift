@@ -12,22 +12,39 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
 
     @IBOutlet weak var captionField: UITextField!
     @IBOutlet weak var choosenImage: UIImageView!
+    var choosenCamera = ""
     var postCaption = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let typeOfCamera = choosenCamera
         let vc = UIImagePickerController()
         vc.delegate = self
         vc.allowsEditing = true
-        vc.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        if typeOfCamera == "takePicture" {
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                print("Camera is available 📸")
+                vc.sourceType = .camera
+            } else {
+                print("Camera 🚫 available so we will use photo library instead")
+                vc.sourceType = .photoLibrary
+            }
+        } else {
+            vc.sourceType = .photoLibrary
+        }
         self.present(vc, animated: true, completion: nil)
     }
 
+    @IBAction func onTap(_ sender: Any) {
+        view.endEditing(true)
+    }
+    
     @IBAction func didPressUpload(_ sender: Any) {
         postCaption = captionField.text ?? ""
         Post.postUserImage(image: choosenImage.image, withCaption: postCaption) { (bool: Bool, error: Error?) in
             print("Post complete")
         }
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -39,29 +56,23 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
                                didFinishPickingMediaWithInfo info: [String : Any]) {
         // Get the image captured by the UIImagePickerController
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
-        choosenImage.image = editedImage
+        choosenImage.image = resize(image: editedImage, newSize: CGSize(width: 640, height: 640))
         choosenImage.layer.borderWidth = 5
         choosenImage.layer.borderColor = UIColor.black.cgColor
-        
-        // Do something with the images (based on your use case)
-        
-        // Dismiss UIImagePickerController to go back to your original view controller
         dismiss(animated: true, completion: nil)
     }
     
-    /*
     func resize(image: UIImage, newSize: CGSize) -> UIImage {
         let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
         resizeImageView.image = image
         
         UIGraphicsBeginImageContext(resizeImageView.frame.size)
-        resizeImageView.layer.renderInContext(<#CGContext#>)
+        resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage!
     }
-    */
 
     /*
     // MARK: - Navigation
