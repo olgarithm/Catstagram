@@ -8,6 +8,7 @@ target 'Catstagram' do
   # Pods for Catstagram
   pod 'Parse'
   pod 'ParseUI'
+  pod 'MBProgressHUD'
 
   target 'CatstagramTests' do
     inherit! :search_paths

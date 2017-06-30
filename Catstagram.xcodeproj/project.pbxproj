@@ -22,6 +22,7 @@
 		86C5B6E61F02FC7A0003C643 /* CatstagramTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5B6E51F02FC7A0003C643 /* CatstagramTests.swift */; };
 		86C5B6F11F02FC7A0003C643 /* CatstagramUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C5B6F01F02FC7A0003C643 /* CatstagramUITests.swift */; };
 		86E0DD571F0584BA00A0118B /* DetailedPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E0DD561F0584BA00A0118B /* DetailedPostViewController.swift */; };
+		86E0DD5B1F05CA5000A0118B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86E0DD5A1F05CA5000A0118B /* ProfileViewController.swift */; };
 		97B2FE3B3ABD6CC6B41CFF30 /* Pods_Catstagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 099CCBCA079401A4AB95CF6A /* Pods_Catstagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		86C5B6F01F02FC7A0003C643 /* CatstagramUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatstagramUITests.swift; sourceTree = "<group>"; };
 		86C5B6F21F02FC7A0003C643 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		86E0DD561F0584BA00A0118B /* DetailedPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailedPostViewController.swift; sourceTree = "<group>"; };
+		86E0DD5A1F05CA5000A0118B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		C0EE6DDAA423C8E658E7864D /* Pods-CatstagramUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatstagramUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatstagramUITests/Pods-CatstagramUITests.release.xcconfig"; sourceTree = "<group>"; };
 		CBEB697E2F0149997F146F06 /* Pods-Catstagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Catstagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Catstagram/Pods-Catstagram.release.xcconfig"; sourceTree = "<group>"; };
 		CE6DB0464B4EB25C371F001F /* Pods-CatstagramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CatstagramTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CatstagramTests/Pods-CatstagramTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				865050E21F031581003B0D40 /* PhotoMapViewController.swift */,
 				866EB8651F0302B2004DD202 /* LoginViewController.swift */,
 				86E0DD561F0584BA00A0118B /* DetailedPostViewController.swift */,
+				86E0DD5A1F05CA5000A0118B /* ProfileViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				865050E31F031581003B0D40 /* PhotoMapViewController.swift in Sources */,
 				865050E71F032F5B003B0D40 /* Post.swift in Sources */,
 				86735A701F047B890085774B /* SelectionViewController.swift in Sources */,
+				86E0DD5B1F05CA5000A0118B /* ProfileViewController.swift in Sources */,
 				86C5B6D11F02FC7A0003C643 /* AppDelegate.swift in Sources */,
 				865050E51F031EC6003B0D40 /* HomeScreenViewController.swift in Sources */,
 			);

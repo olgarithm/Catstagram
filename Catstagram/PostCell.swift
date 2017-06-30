@@ -14,7 +14,8 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var postImage: PFImageView!
     @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var timestampLabel: UILabel!
+    @IBOutlet weak var profileImage: PFImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

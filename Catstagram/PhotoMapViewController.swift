@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextViewDelegate {
 
@@ -18,14 +19,7 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        captionTextView.delegate = self
-        placeholderLabel.text = "Write a caption..."
-        placeholderLabel.sizeToFit()
-        captionTextView.addSubview(placeholderLabel)
-        placeholderLabel.frame.origin = CGPoint(x: 5, y: (captionTextView.font?.pointSize)! / 2)
-        placeholderLabel.textColor = UIColor.lightGray
-        placeholderLabel.isHidden = !captionTextView.text.isEmpty
-        captionTextView.layer.cornerRadius = 5.0
+        setPlaceholderText()
         let cameraType = choosenCameraType
         let vc = UIImagePickerController()
         vc.delegate = self
@@ -43,6 +37,17 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         }
         self.present(vc, animated: true, completion: nil)
     }
+    
+    func setPlaceholderText() {
+        captionTextView.delegate = self
+        placeholderLabel.text = "Write a caption..."
+        placeholderLabel.sizeToFit()
+        captionTextView.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (captionTextView.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !captionTextView.text.isEmpty
+        captionTextView.layer.cornerRadius = 5.0
+    }
 
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true)
@@ -52,9 +57,8 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         placeholderLabel.isHidden = !textView.text.isEmpty
     }
     
-    
     @IBAction func didPressUpload(_ sender: Any) {
-            postCaption = captionTextView.text ?? ""
+        postCaption = captionTextView.text ?? ""
         Post.postUserImage(image: choosenImage.image, withCaption: postCaption) { (bool: Bool, error: Error?) in
             print("Post complete")
         }
@@ -78,7 +82,6 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         let resizeImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: newSize.width, height: newSize.height))
         resizeImageView.contentMode = UIViewContentMode.scaleAspectFill
         resizeImageView.image = image
-        
         UIGraphicsBeginImageContext(resizeImageView.frame.size)
         resizeImageView.layer.render(in: UIGraphicsGetCurrentContext()!)
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -95,5 +98,4 @@ class PhotoMapViewController: UIViewController, UIImagePickerControllerDelegate,
         // Pass the selected object to the new view controller.
     }
     */
-
 }

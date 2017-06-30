@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 import ParseUI
+import MBProgressHUD
 
 class HomeScreenViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -24,9 +25,15 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
         refreshControl.addTarget(self, action: #selector(self.refreshControlAction(_:)), for: .valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         tableView.separatorStyle = .none
-        getPosts()
+        refreshPage()
     }
 
+    func refreshPage() {
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        getPosts()
+        tableView.setContentOffset(CGPoint.zero, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -53,11 +60,18 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
         let author = postData["author"] as! PFUser
         let imageObject = postData["media"] as! PFFile
         let caption = postData["caption"] as! String
+        let date = postData.createdAt!
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM dd, yyyy"
+        let dateString = dateFormatter.string(from:date as Date)
         
-        cell.postImage.file = imageObject 
+        cell.postImage.file = imageObject
         cell.postImage.loadInBackground()
         cell.usernameLabel.text = author.username
         cell.captionLabel.text = caption
+        cell.timestampLabel.text = dateString
+        cell.profileImage.file = author["profilePicture"] as! PFFile
+        cell.profileImage.loadInBackground()
         
         return cell
     }
@@ -73,10 +87,11 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
             if let posts = posts {
                 self.returnedPosts = posts
                 self.tableView.reloadData()
+                self.refreshControl.endRefreshing()
+                MBProgressHUD.hide(for: self.view, animated: true)
             } else {
                 print(error?.localizedDescription as Any)
             }
-            self.refreshControl.endRefreshing()
         }
     }
     
@@ -90,6 +105,7 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
                 let postData = returnedPosts[indexPath.row]
                 let detailViewController = segue.destination as! DetailedPostViewController
                 detailViewController.post = postData
+                tableView.deselectRow(at: indexPath, animated: true)
             }
         }
     }
