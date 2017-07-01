@@ -8,13 +8,20 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var profilePictureImageView: UIImageView!
+    @IBOutlet weak var profileImageView: PFImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let user = PFUser.current()
+        let profileImage = user?.value(forKey: "profilePicture") as! PFFile
+        profileImageView.file = profileImage
+        profileImageView.loadInBackground()
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2;
+        profileImageView.clipsToBounds = true;
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,11 +41,10 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         // Get the image captured by the UIImagePickerController
         let editedImage = info[UIImagePickerControllerEditedImage] as! UIImage
         let editedProfileImage = resize(image: editedImage, newSize: CGSize(width: 640, height: 640))
-        profilePictureImageView.image = editedProfileImage
+        profileImageView.image = editedProfileImage
         let user = PFUser.current()
-        user?["profilePicture"] = Post.getPFFileFromImage(image: editedProfileImage) as? PFFile
+        user?["profilePicture"] = Post.getPFFileFromImage(image: editedProfileImage)
         user?.saveInBackground(block: { (bool: Bool, error: Error?) in
-            print("what the FUck")
         })
         dismiss(animated: true, completion: nil)
     }

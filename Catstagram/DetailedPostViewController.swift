@@ -11,6 +11,8 @@ import Parse
 import ParseUI
 
 class DetailedPostViewController: UIViewController {
+    
+    @IBOutlet weak var profileImage: PFImageView!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -32,6 +34,9 @@ class DetailedPostViewController: UIViewController {
             usernameLabel.text = author.username
             detailedImageView.file = imageObject
             detailedImageView.loadInBackground()
+            profileImage.file = author["profilePicture"] as! PFFile
+            profileImage.layer.cornerRadius = profileImage.frame.size.width / 2;
+            profileImage.clipsToBounds = true;
         }
     }
 

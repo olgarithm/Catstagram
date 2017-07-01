@@ -32,6 +32,7 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
         MBProgressHUD.showAdded(to: self.view, animated: true)
         getPosts()
         tableView.setContentOffset(CGPoint.zero, animated: true)
+        MBProgressHUD.hide(for: self.view, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,8 +73,14 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
         cell.timestampLabel.text = dateString
         cell.profileImage.file = author["profilePicture"] as! PFFile
         cell.profileImage.loadInBackground()
-        
+        cell.profileImage.layer.cornerRadius = cell.profileImage.frame.size.width / 2;
+        cell.profileImage.clipsToBounds = true;
+    
         return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        refreshPage()
     }
     
     func getPosts() {
@@ -88,7 +95,6 @@ class HomeScreenViewController: UIViewController, UITableViewDataSource, UITable
                 self.returnedPosts = posts
                 self.tableView.reloadData()
                 self.refreshControl.endRefreshing()
-                MBProgressHUD.hide(for: self.view, animated: true)
             } else {
                 print(error?.localizedDescription as Any)
             }
